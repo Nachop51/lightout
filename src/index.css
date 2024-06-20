@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+  color-scheme: light dark;
+
+  @apply bg-zinc-950;
+}
+
+*,
+*::before,
+*::after {
+  @apply p-0 m-0 box-border;
+}
