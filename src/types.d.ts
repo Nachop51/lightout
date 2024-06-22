@@ -1,4 +1,6 @@
-export type Method = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'OPTIONS' | 'HEAD' | 'CONNECT' | 'TRACE'
+import { methods } from './constants'
+
+export type Method = typeof methods[number];
 
 export interface LightoutRequest {
   id: string

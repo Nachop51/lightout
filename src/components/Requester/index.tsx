@@ -1,4 +1,5 @@
 import { useRequests } from '../../stores/requests'
+import Sender from './Sender'
 
 const Requests = () => {
   const currentReq = useRequests(s => s.selectedRequest)
@@ -20,8 +21,10 @@ const Requests = () => {
   return (
     <div className='[grid-area:main]'>
       <div>
-        <h2>Request</h2>
+        <Sender />
+        <h2>Request:</h2>
         <pre>{JSON.stringify(currentReq, null, 2)}</pre>
+        <span>some things below</span>
       </div>
     </div>
   )

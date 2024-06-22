@@ -1,35 +1,39 @@
 import React from 'react'
 import { CrossIcon } from '../assets/Icons'
-import { LightoutRequest } from '../types'
+import { Method } from '../types.d'
 import MethodTag from './ui/MethodTag'
 import { useRequests } from '../stores/requests'
 
 interface RequestListItemProps {
-  request: LightoutRequest
+  id: string
+  host: string
+  method: Method
+  name?: string
 }
 
-const RequestListItem = ({ request }: RequestListItemProps) => {
+const RequestListItem = ({ id, host, name, method }: RequestListItemProps) => {
   const selectRequest = useRequests((s) => s.selectRequest)
   const deleteRequest = useRequests((s) => s.deleteRequest)
 
   const handleClick = () => {
-    selectRequest(request)
+    selectRequest(id)
   }
+
   const handleDeleteRequest = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.stopPropagation()
 
-    deleteRequest(request)
+    deleteRequest(id)
   }
 
   return (
     <div
-      className='group p-2 grid items-center gap-2 rounded cursor-pointer text-sm hover:bg-gray-200/10 overflow-hidden transition-colors' style={{
+      className='group p-2 grid items-center rounded cursor-pointer text-sm hover:bg-gray-200/10 overflow-hidden transition-colors' style={{
         gridTemplateColumns: '50px auto 1.5rem'
       }} onClick={handleClick}
     >
-      <MethodTag method={request.method} />
-      <span className='overflow-hidden whitespace-nowrap text-ellipsis'>
-        {request.name ?? request.host}
+      <MethodTag method={method} />
+      <span className='pl-2 overflow-hidden whitespace-nowrap text-ellipsis'>
+        {name || host || 'New Request'}
       </span>
       <button className='group-hover:visible  border-white p-1 rounded hover:text-red-500 transition-colors invisible' onClick={handleDeleteRequest}>
         <CrossIcon />
