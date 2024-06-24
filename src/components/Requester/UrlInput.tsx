@@ -25,7 +25,7 @@ const UrlInput = ({ request }: UrlInputProps) => {
       <section>
         <form className='flex p-2'>
 
-          <Dropdown className={`rounded-l border-r-0 ${methodsColors[request.method].textColor}`} value={request.method}>
+          <Dropdown className={`rounded-l border-r-0 ${methodsColors[request.method].textColor} min-w-[122px]`} value={request.method}>
             {
               methods.map((method, i) => (
                 <React.Fragment key={method}>
@@ -50,7 +50,7 @@ const UrlInput = ({ request }: UrlInputProps) => {
           </div>
           <input
             type='text'
-            className='flex-1 rounded-r border border-white border-l-0 pl-4 text-sm font-light bg-transparent'
+            className='flex-1 rounded-r border border-white border-l-0 pl-4 text-sm font-light bg-transparent outline -outline-offset-1 outline-4 outline-transparent transition-all focus:outline-violet-400'
             value={request.host}
             onChange={handleInputChange}
             placeholder='https://api.nachop.xyz/shorten?url=https://nachop.xyz'

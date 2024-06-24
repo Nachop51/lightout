@@ -1,8 +1,8 @@
 import React from 'react'
-import { CrossIcon } from '../assets/Icons'
-import { Method } from '../types.d'
-import MethodTag from './ui/MethodTag'
-import { useRequests } from '../stores/requests'
+import { CrossIcon } from '../../assets/Icons'
+import { Method } from '../../types'
+import MethodTag from '../ui/MethodTag'
+import { useRequests } from '../../stores/requests'
 
 interface RequestListItemProps {
   id: string
