@@ -1,10 +1,12 @@
 import { useRequests } from '../../stores/requests'
+import ViewResponse from './ViewResponse'
 import Sender from './Sender'
+import { useHistory } from '../../stores/history'
 
 const Requests = () => {
   const currentReq = useRequests(s => s.selectedRequest)
+  const responses = useHistory(s => s.responses)
   const addRequest = useRequests(s => s.addRequest)
-
   const handleAddRequest = () => addRequest()
 
   if (currentReq == null) {
@@ -27,6 +29,7 @@ const Requests = () => {
         <h2>Request:</h2>
         <pre>{JSON.stringify(currentReq, null, 2)}</pre>
       </div>
+      <ViewResponse response={responses[currentReq.id]} />
     </div>
   )
 }

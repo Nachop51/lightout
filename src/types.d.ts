@@ -7,6 +7,16 @@ export interface LightoutRequest {
   name?: string
   host: string
   method: Method
-  response?: Response
-  request?: Request
+  params?: Record<string, string>
+  headers?: Record<string, string>
+  cookies?: Record<string, string>
+  body?: string
+}
+
+export interface LightoutResponse {
+  status: number
+  statusText: string
+  headers: Record<string, string>
+  body: string
+  cookies: Record<string, string>
 }

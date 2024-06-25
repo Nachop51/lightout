@@ -10,6 +10,7 @@ interface RequestsState {
   selectRequest: (id: string) => void
   deleteRequest: (id: string) => void
   updateRequest: (request: LightoutRequest) => void
+  performRequest: (request: LightoutRequest) => Promise<Response>
 }
 
 const initialRequests: Record<string, LightoutRequest> = {
@@ -64,6 +65,15 @@ export const useRequests = create<RequestsState>()(persist(
           [request.id]: request
         }
       }))
+    },
+    performRequest: async (request) => {
+      const response = await fetch(request.host, {
+        method: request.method,
+        headers: request.headers,
+        body: request.body
+      })
+
+      return response
     }
   }),
   { name: 'requests' }

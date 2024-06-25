@@ -28,14 +28,14 @@ const RequestListItem = ({ id, host, name, method }: RequestListItemProps) => {
   return (
     <div
       className='group p-2 grid items-center rounded cursor-pointer text-sm hover:bg-gray-200/10 overflow-hidden transition-colors' style={{
-        gridTemplateColumns: '50px auto 1.5rem'
+        gridTemplateColumns: '50px auto 1.25rem'
       }} onClick={handleClick}
     >
       <MethodTag method={method} />
       <span className='pl-2 overflow-hidden whitespace-nowrap text-ellipsis'>
         {name || host || 'New Request'}
       </span>
-      <button className='group-hover:visible  border-white p-1 rounded hover:text-red-500 transition-colors invisible' onClick={handleDeleteRequest}>
+      <button className='invisible group-hover:visible hover:text-red-500 transition-colors p-1' onClick={handleDeleteRequest}>
         <CrossIcon />
       </button>
     </div>
