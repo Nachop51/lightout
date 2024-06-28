@@ -33,7 +33,7 @@ const HandleSend = ({ request }: UrlInputProps) => {
 
   return (
     <section>
-      <form className='flex p-2' onSubmit={handleSubmit}>
+      <form className='flex' onSubmit={handleSubmit}>
         <Dropdown className={`rounded-l border-r-0 ${methodsColors[request.method].textColor} min-w-[122px]`} value={request.method}>
           {
               methods.map((method, i) => (
@@ -54,12 +54,12 @@ const HandleSend = ({ request }: UrlInputProps) => {
           <Dropdown.Description>Select desired method</Dropdown.Description>
         </Dropdown>
 
-        <div className='flex items-center border-y'>
+        <div className='flex items-center border-y border-[var(--border)]'>
           <span className='border-l h-1/2' />
         </div>
         <input
           type='text'
-          className='flex-1 rounded-r border border-white border-l-0 pl-4 text-sm font-light bg-transparent outline -outline-offset-1 outline-4 outline-transparent transition-all focus:outline-violet-400'
+          className='flex-1 rounded-r border border-[var(--border)] border-l-0 pl-4 text-sm font-light bg-transparent outline -outline-offset-1 outline-4 outline-transparent transition-all focus:outline-violet-400'
           value={request.host}
           onChange={handleInputChange}
           placeholder='https://api.nachop.xyz/shorten?url=https://nachop.xyz'

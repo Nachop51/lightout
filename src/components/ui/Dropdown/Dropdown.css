@@ -7,7 +7,7 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
 
-  border: 1px solid white;
+  border: 1px solid var(--border);
 
   @apply outline outline-4 -outline-offset-1 outline-transparent;
 
@@ -39,7 +39,7 @@
   font-size: 0.75rem;
   line-height: 1rem;
 
-  border: 1px solid #303030;
+  border: 1px solid var(--border);
 
   cursor: default;
 
@@ -61,11 +61,11 @@
 }
 
 .dropdown-item:hover:not([data-active="true"]) {
-  background-color: #303030;
+  background-color: var(--border);
 }
 
 .dropdown-divider {
-  border-top: 1px solid #303030;
+  border-top: 1px solid var(--border);
   margin: 0.5rem auto;
 
   width: 92%;

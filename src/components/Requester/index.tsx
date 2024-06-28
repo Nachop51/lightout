@@ -14,7 +14,7 @@ const Requests = () => {
       <div className='[grid-area:main] grid place-items-center'>
         <div className='text-center'>
           <h2 className='text-3xl mb-4'>No request selected</h2>
-          <button className='px-4 py-2 border-white border rounded-lg' onClick={handleAddRequest}>
+          <button className='px-4 py-2 border-[var(--border)] border rounded-lg' onClick={handleAddRequest}>
             Create new Request
           </button>
         </div>
@@ -23,12 +23,8 @@ const Requests = () => {
   }
 
   return (
-    <div className='[grid-area:main]'>
-      <div>
-        <Sender />
-        <h2>Request:</h2>
-        <pre>{JSON.stringify(currentReq, null, 2)}</pre>
-      </div>
+    <div className='[grid-area:main] requester-layout p-2'>
+      <Sender />
       <ViewResponse response={responses[currentReq.id]} />
     </div>
   )

@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --bg: #212121;
+  --bg: #141414;
+
+  --text-inactive: #9b9ba4;
+
+  --border: #27272a;
 
   font-family: "Outfit", sans-serif;
   font-optical-sizing: auto;
@@ -29,5 +33,5 @@
 }
 
 ::-webkit-scrollbar-track {
-  background-color: var(--bg);
+  background-color: transparent;
 }
