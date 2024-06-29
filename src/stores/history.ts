@@ -5,7 +5,7 @@ import type { LightoutRequest, LightoutResponse } from '../types'
 
 interface HistoryState {
   responses: Record<string, LightoutResponse>
-  pushToHistory: (id: LightoutRequest['id'], response: Response) => void
+  pushToHistory: (id: LightoutRequest['id'], response: LightoutResponse) => void
   clearHistory: () => void
 }
 
@@ -15,20 +15,12 @@ export const useHistory = create<HistoryState>()(persist(
   (set) => ({
     responses: initialHistory,
     pushToHistory: (id, response) => {
-      response.text().then((body) => {
-        set((state) => ({
-          responses: {
-            ...state.responses,
-            [id]: {
-              status: response.status,
-              statusText: response.statusText,
-              headers: Object.fromEntries(response.headers.entries()),
-              body,
-              cookies: {}
-            }
-          }
-        }))
-      })
+      set((state) => ({
+        responses: {
+          ...state.responses,
+          [id]: response
+        }
+      }))
     },
     clearHistory: () => {
       set({ responses: {} })

@@ -15,11 +15,11 @@ const Sender = () => {
           <TabsPanelButton value='params'>
             Params
           </TabsPanelButton>
-          <TabsPanelButton value='body'>
-            Body
-          </TabsPanelButton>
           <TabsPanelButton value='headers'>
             Headers
+          </TabsPanelButton>
+          <TabsPanelButton value='body'>
+            Body
           </TabsPanelButton>
           <TabsPanelButton value='cookies'>
             Cookies
@@ -29,11 +29,11 @@ const Sender = () => {
         <TabsContent value='params' className='tabs-body-default'>
           <h2 className='text-xl'>params</h2>
         </TabsContent>
-        <TabsContent value='body'>
-          <h2 className='text-xl'>body</h2>
-        </TabsContent>
         <TabsContent value='headers'>
           <h2 className='text-xl'>headers</h2>
+        </TabsContent>
+        <TabsContent value='body'>
+          <h2 className='text-xl'>body</h2>
         </TabsContent>
         <TabsContent value='cookies'>
           <h2 className='text-xl'>cookies</h2>

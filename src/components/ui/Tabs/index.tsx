@@ -1,8 +1,8 @@
 import './Tabs.css'
-import React, { DetailedHTMLProps, HTMLAttributes } from 'react'
+import React from 'react'
 
-type DivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
-type ButtonProps = DetailedHTMLProps<HTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
+type DivProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+type ButtonProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
 
 /* --------------------------------- Context --------------------------------- */
 
@@ -36,14 +36,13 @@ function createTabsContext (defaultContext: TabsContextType) {
 
 const [TabsProvider, useTabsContext] = createTabsContext({ selectedTab: '', setSelectedTab: () => {} })
 
+/* --------------------------------- Tabs --------------------------------- */
+
+type TabsElement = React.ElementRef<'div'>
 interface TabsProps extends DivProps {
   defaultTab?: string
   onValueChange?: (value: string) => void
 }
-
-/* --------------------------------- Tabs --------------------------------- */
-
-type TabsElement = React.ElementRef<'div'>
 
 export const Tabs = React.forwardRef<TabsElement, TabsProps>(({ defaultTab, onValueChange, ...props }, ref) => {
   const [selectedTab, setSelectedTab] = React.useState(defaultTab)
@@ -71,7 +70,6 @@ interface TabsPanelProps extends DivProps {}
 export const TabsPanel = React.forwardRef<TabsPanelElement, TabsPanelProps>((props, ref) => {
   return (
     <div
-      className=''
       ref={ref}
       {...props}
     />

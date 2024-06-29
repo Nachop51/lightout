@@ -1,7 +1,8 @@
 import { create } from 'zustand'
-import type { LightoutRequest } from '../types'
+import type { LightoutRequest, LightoutResponse } from '../types'
 import { persist } from 'zustand/middleware'
 import { createId } from '@paralleldrive/cuid2'
+import { makeLightoutRequest } from '../services/makeLightoutRequest'
 
 interface RequestsState {
   requests: Record<string, LightoutRequest>
@@ -10,7 +11,7 @@ interface RequestsState {
   selectRequest: (id: string) => void
   deleteRequest: (id: string) => void
   updateRequest: (request: LightoutRequest) => void
-  performRequest: (request: LightoutRequest) => Promise<Response>
+  performRequest: (request: LightoutRequest) => Promise<LightoutResponse>
 }
 
 const initialRequests: Record<string, LightoutRequest> = {
@@ -67,13 +68,7 @@ export const useRequests = create<RequestsState>()(persist(
       }))
     },
     performRequest: async (request) => {
-      const response = await fetch(request.host, {
-        method: request.method,
-        headers: request.headers,
-        body: request.body
-      })
-
-      return response
+      return makeLightoutRequest(request)
     }
   }),
   { name: 'requests' }

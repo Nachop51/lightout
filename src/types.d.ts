@@ -16,7 +16,8 @@ export interface LightoutRequest {
 export interface LightoutResponse {
   status: number
   statusText: string
+  timeTaken: number
   headers: Record<string, string>
-  body: string
   cookies: Record<string, string>
+  body: string
 }

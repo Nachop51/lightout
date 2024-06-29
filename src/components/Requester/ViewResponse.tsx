@@ -1,4 +1,5 @@
 import { LightoutResponse } from '../../types'
+import StatusSpan from '../ui/StatusSpan'
 import { Tabs, TabsContent, TabsPanel, TabsPanelButton } from '../ui/Tabs'
 
 interface ViewResponseProps {
@@ -16,9 +17,14 @@ const ViewResponse = ({ response }: ViewResponseProps) => {
 
   return (
     <section className='[grid-area:receiver]'>
-      <div>
-        {response.status} {response.statusText}
+      <div className='flex gap-2 font-normal text-sm'>
+        <StatusSpan status={response.status} />
+        <span className='text-green-300'>
+          {`${response.timeTaken.toFixed(2)}ms`}
+        </span>
+        {response.statusText}
       </div>
+
       <Tabs defaultTab='headers'>
         <TabsPanel className='tabs-default'>
           <TabsPanelButton value='body'>

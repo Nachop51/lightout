@@ -22,7 +22,7 @@ export const Dropdown = ({
   }
 
   return (
-    <div role='button' onClick={handleClick} className={'dropdown-button-container ' + className ?? ''} aria-expanded={isOpen}>
+    <div role='button' tabIndex={0} onClick={handleClick} className={'dropdown-button-container ' + className ?? ''} aria-expanded={isOpen}>
       <div className='dropdown-button-content'>
         <span>{value}</span>
         <DownArrowIcon />
