@@ -17,7 +17,6 @@ function createTabsContext (defaultContext: TabsContextType) {
   function Provider (props: TabsContextType & { children: React.ReactNode }) {
     const { children, ...rest } = props
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     const value = React.useMemo(() => rest, Object.values(rest))
 
     return (

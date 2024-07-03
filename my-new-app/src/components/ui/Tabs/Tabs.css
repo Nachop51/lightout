@@ -42,3 +42,7 @@
 
   background-color: var(--bg);
 }
+
+.tabs-body-default[hidden] {
+  display: none;
+}

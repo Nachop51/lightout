@@ -1,10 +1,10 @@
 import React from 'react'
-import { ArrowIcon } from '../../assets/Icons'
-import { useRequests } from '../../stores/requests'
-import { LightoutRequest, Method } from '../../types'
-import { methods, methodsColors } from '../../constants'
-import Dropdown from '../ui/Dropdown'
-import { useHistory } from '../../stores/history'
+import { ArrowIcon } from '../../../assets/Icons'
+import { useRequests } from '../../../stores/requests'
+import { LightoutRequest, Method } from '../../../types.d'
+import { methods, methodsColors } from '../../../constants'
+import Dropdown from '../../ui/Dropdown'
+import { useHistory } from '../../../stores/history'
 
 interface UrlInputProps {
   request: LightoutRequest
@@ -34,7 +34,7 @@ const HandleSend = ({ request }: UrlInputProps) => {
   return (
     <section>
       <form className='flex' onSubmit={handleSubmit}>
-        <Dropdown className={`rounded-l border-r-0 ${methodsColors[request.method].textColor} min-w-[122px]`} value={request.method}>
+        <Dropdown className={`rounded-l !border-r-0 ${methodsColors[request.method].textColor} min-w-[122px]`} value={request.method}>
           {
               methods.map((method, i) => (
                 <React.Fragment key={method}>
@@ -55,7 +55,7 @@ const HandleSend = ({ request }: UrlInputProps) => {
         </Dropdown>
 
         <div className='flex items-center border-y border-[var(--border)]'>
-          <span className='border-l h-1/2' />
+          <span className='border-l h-1/2 border-[var(--border)]' />
         </div>
         <input
           type='text'
