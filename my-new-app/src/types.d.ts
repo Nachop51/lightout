@@ -1,13 +1,5 @@
 import { methods } from './constants'
 
-declare global {
-  export interface Window {
-    electronAPI: {
-      setTitle: (title: string) => void
-    }
-  }
-}
-
 export type Method = typeof methods[number];
 
 export interface LightoutRequest {
@@ -28,4 +20,13 @@ export interface LightoutResponse {
   headers: Record<string, string>
   cookies: Record<string, string>
   body: string
+}
+
+declare global {
+  export interface Window {
+    electronAPI: {
+      setTitle: (title: string) => void
+      makeRequest: (request: LightoutRequest) => Promise<LightoutResponse>
+    }
+  }
 }
