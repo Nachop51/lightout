@@ -8,6 +8,5 @@ const root = createRoot(element)
 root.render(
   <React.StrictMode>
     <App />
-    <button onClick={() => window.electronAPI.setTitle('test')}>tesssssssst</button>
   </React.StrictMode>
 )

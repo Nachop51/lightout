@@ -5,7 +5,6 @@ import { contextBridge, ipcRenderer } from 'electron'
 import type { LightoutRequest, LightoutResponse } from './types.d'
 
 contextBridge.exposeInMainWorld('electronAPI', {
-  setTitle: (title: string) => ipcRenderer.send('test', title),
   makeRequest: async (request: LightoutRequest): Promise<LightoutResponse> => {
     const res = await ipcRenderer.invoke('make-request', request)
 

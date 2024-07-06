@@ -2,6 +2,18 @@ import { methods } from './constants'
 
 export type Method = typeof methods[number];
 
+interface CookieAttributes {
+  name: string;
+  value: string;
+  expires?: string;
+  path?: string;
+  domain?: string;
+  secure?: boolean;
+  httponly?: boolean;
+  samesite?: string;
+  [key: string]: string | boolean | undefined;
+}
+
 export interface LightoutRequest {
   id: string
   name?: string
@@ -9,7 +21,6 @@ export interface LightoutRequest {
   method: Method
   params?: Record<string, string>
   headers?: Record<string, string>
-  cookies?: Record<string, string>
   body?: string
 }
 
@@ -18,14 +29,13 @@ export interface LightoutResponse {
   statusText: string
   timeTaken: number
   headers: Record<string, string>
-  cookies: Record<string, string>
+  cookies: CookieAttributes[]
   body: string
 }
 
 declare global {
   export interface Window {
     electronAPI: {
-      setTitle: (title: string) => void
       makeRequest: (request: LightoutRequest) => Promise<LightoutResponse>
     }
   }
