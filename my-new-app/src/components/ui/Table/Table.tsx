@@ -1,13 +1,14 @@
+import { cn } from '../../../utils'
 import React from 'react'
-import './Table.css'
 
 interface TableProps {
   children: React.ReactNode
+  className?: string
 }
 
-const Table: React.FC<TableProps> = ({ children }) => {
+const Table: React.FC<TableProps> = ({ children, className }) => {
   return (
-    <table className='table-component'>
+    <table className={cn('w-full border-collapse border-spacing-0 text-sm indent-0', className)}>
       {children}
     </table>
   )
