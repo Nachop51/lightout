@@ -1,5 +1,6 @@
 import { LightoutResponse } from '../../types.d'
 import StatusSpan from '../ui/StatusSpan'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/Table'
 import { Tabs, TabsContent, TabsPanel, TabsPanelButton } from '../ui/Tabs'
 
 interface ViewResponseProps {
@@ -48,6 +49,24 @@ const ViewResponse = ({ response }: ViewResponseProps) => {
         </TabsContent>
         <TabsContent value='headers'>
           <h2 className='text-xl'>Response headers</h2>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Name</TableHead>
+                <TableHead>Value</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {
+                Object.entries(response.headers).map(([name, value]) => (
+                  <TableRow key={name}>
+                    <TableCell>{name}</TableCell>
+                    <TableCell>{value}</TableCell>
+                  </TableRow>
+                ))
+              }
+            </TableBody>
+          </Table>
           <pre className='whitespace-break-spaces break-all'>{JSON.stringify(response.headers, null, 2)}</pre>
         </TabsContent>
         <TabsContent value='cookies'>
