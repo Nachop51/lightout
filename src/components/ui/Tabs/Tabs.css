@@ -13,27 +13,9 @@
   border-radius: 0.375rem;
 }
 
-.tabs-default > button {
-  background-color: transparent;
-  width: 100%;
-
-  padding-top: 0.375rem;
-  padding-bottom: 0.375rem;
-
-  color: var(--text-inactive);
-
-  border-radius: 0.25rem;
-
-  transition: background-color 0.2s, color 0.2s;
-}
-
-.tabs-default > button[data-active="true"] {
-  background-color: var(--bg);
-  color: white;
-}
-
 .tabs-body-default {
   display: flex;
+  flex-direction: column;
   gap: 0.25rem;
 
   padding: 0.5rem;
@@ -41,4 +23,8 @@
   border: 1px solid var(--border);
 
   background-color: var(--bg);
+}
+
+.tabs-body-default[hidden] {
+  display: none;
 }

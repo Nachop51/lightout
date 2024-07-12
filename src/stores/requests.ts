@@ -1,8 +1,8 @@
 import { create } from 'zustand'
-import type { LightoutRequest, LightoutResponse } from '../types'
 import { persist } from 'zustand/middleware'
 import { createId } from '@paralleldrive/cuid2'
 import { makeLightoutRequest } from '../services/makeLightoutRequest'
+import type { LightoutRequest, LightoutResponse } from '@/types.d'
 
 interface RequestsState {
   requests: Record<string, LightoutRequest>

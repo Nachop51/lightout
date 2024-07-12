@@ -1,1 +1,0 @@
-# Lightout project

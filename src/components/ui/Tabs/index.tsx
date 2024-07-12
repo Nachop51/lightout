@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/index'
 import './Tabs.css'
 import React from 'react'
 
@@ -17,7 +18,6 @@ function createTabsContext (defaultContext: TabsContextType) {
   function Provider (props: TabsContextType & { children: React.ReactNode }) {
     const { children, ...rest } = props
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     const value = React.useMemo(() => rest, Object.values(rest))
 
     return (
@@ -67,10 +67,11 @@ export const Tabs = React.forwardRef<TabsElement, TabsProps>(({ defaultTab, onVa
 type TabsPanelElement = React.ElementRef<'div'>
 interface TabsPanelProps extends DivProps {}
 
-export const TabsPanel = React.forwardRef<TabsPanelElement, TabsPanelProps>((props, ref) => {
+export const TabsPanel = React.forwardRef<TabsPanelElement, TabsPanelProps>(({ className, ...props }, ref) => {
   return (
     <div
       ref={ref}
+      className={cn('tabs-panel', className)}
       {...props}
     />
   )
@@ -83,15 +84,25 @@ interface TabsPanelButtonProps extends ButtonProps {
   value: string
 }
 
-export const TabsPanelButton = React.forwardRef<TabsPanelButtonElement, TabsPanelButtonProps>(({ value, children }, ref) => {
+export const TabsPanelButton = React.forwardRef<TabsPanelButtonElement, TabsPanelButtonProps>(({ value, children, className, ...props }, ref) => {
   const context = useTabsContext()
+
+  const classNames = cn('bg-transparent w-full py-1 px-2 text-sm text-[var(--text-inactive)] rounded transition-colors',
+    className,
+    {
+      'bg-[var(--bg)]': context.selectedTab === value,
+      'text-white': context.selectedTab === value
+    }
+  )
 
   return (
     <button
       ref={ref}
       value={value}
+      className={cn(classNames)}
       data-active={context.selectedTab === value}
       onClick={() => context.setSelectedTab(value)}
+      {...props}
     >{children}
     </button>
   )

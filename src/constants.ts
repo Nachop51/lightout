@@ -1,4 +1,4 @@
-import { Method } from './types'
+import { Method } from './types.d'
 
 export const methods = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS', 'HEAD', 'CONNECT', 'TRACE'] as const
 

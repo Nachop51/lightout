@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 // import type { LightoutRequest } from '../types'
 import { persist } from 'zustand/middleware'
-import type { LightoutRequest, LightoutResponse } from '../types'
+import type { LightoutRequest, LightoutResponse } from '@/types.d'
 
 interface HistoryState {
   responses: Record<string, LightoutResponse>
