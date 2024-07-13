@@ -8,7 +8,7 @@ interface TableProps {
 
 const TableHead: React.FC<TableProps> = ({ children, className }) => {
   return (
-    <th className={cn('h-12 px-4 text-left align-middle font-semibold text-zinc-500', className)}>{children}</th>
+    <th className={cn('p-2 text-left align-middle font-semibold text-zinc-500', className)}>{children}</th>
   )
 }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { CrossIcon } from '../../assets/Icons'
-import { Method } from '../../types'
+import { Method } from '../../types.d'
 import MethodTag from '../ui/MethodTag'
 import { useRequests } from '../../stores/requests'
 
@@ -27,7 +27,7 @@ const RequestListItem = ({ id, host, name, method }: RequestListItemProps) => {
 
   return (
     <div
-      className='group p-2 grid items-center rounded cursor-pointer text-sm hover:bg-gray-200/10 overflow-hidden transition-colors' style={{
+      className='group p-2 grid items-center rounded cursor-pointer text-sm hover:bg-gray-200/10 transition-colors' style={{
         gridTemplateColumns: '50px auto 1.25rem'
       }} onClick={handleClick}
     >

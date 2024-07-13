@@ -1,7 +1,7 @@
-import { LightoutResponse } from '../../types.d'
-import StatusSpan from '../ui/StatusSpan'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/Table'
-import { Tabs, TabsContent, TabsPanel, TabsPanelButton } from '../ui/Tabs'
+import { LightoutResponse } from '../../../types.d'
+import StatusSpan from '../../ui/StatusSpan'
+import { Tabs, TabsContent, TabsPanel, TabsPanelButton } from '../../ui/Tabs'
+import Headers from './Headers'
 
 interface ViewResponseProps {
   response: LightoutResponse | null
@@ -21,7 +21,7 @@ const ViewResponse = ({ response }: ViewResponseProps) => {
       <div className='flex gap-2 font-normal text-sm overflow-hidden'>
         <StatusSpan status={response.status} />
         <span className='text-green-300'>
-          {`${response.timeTaken.toFixed(2)}ms`}
+          {response.timeTaken.toFixed(2)}ms
         </span>
         {response.statusText}
       </div>
@@ -48,30 +48,15 @@ const ViewResponse = ({ response }: ViewResponseProps) => {
           </pre>
         </TabsContent>
         <TabsContent value='headers'>
-          <h2 className='text-xl'>Response headers</h2>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Name</TableHead>
-                <TableHead>Value</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {
-                Object.entries(response.headers).map(([name, value]) => (
-                  <TableRow key={name}>
-                    <TableCell>{name}</TableCell>
-                    <TableCell>{value}</TableCell>
-                  </TableRow>
-                ))
-              }
-            </TableBody>
-          </Table>
-          <pre className='whitespace-break-spaces break-all'>{JSON.stringify(response.headers, null, 2)}</pre>
+          <Headers headers={response.headers} />
         </TabsContent>
         <TabsContent value='cookies'>
-          <h2 className='text-xl'>Response cookies</h2>
-          <pre className='whitespace-break-spaces'>{JSON.stringify(response.cookies, null, 2)}</pre>
+          {response.cookies.map(cookie => (
+            <div key={cookie.name} className='flex gap-2'>
+              <span>{cookie.name}</span>
+              <span>{cookie.value}</span>
+            </div>
+          ))}
         </TabsContent>
       </Tabs>
     </section>
